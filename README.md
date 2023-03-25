@@ -9,29 +9,49 @@ sudo apt install python3-rpi.gpio
 # Installation from source
 It is recommended that you install from source so that the correct GPIO pin and temperature ranges can be selected. These properties are currently hard coded in `rpi-pwm-fan-control.py`.
 
-### Download from latest git
+### Download
 ```bash
-sudo apt install git
-git clone https://github.com/alexmadeathing/rpi-pwm-fan-control.git
-cd rpi-pwm-fan-control
-```
-
-### Download with curl
-```bash
+sudo apt install curl
 mkdir -p rpi-pwm-fan-control && cd $_
-curl -LJ `curl -s https://api.github.com/repos/alexmadeathing/rpi-pwm-fan-control/releases/latest | python3  -c 'import sys, json; print(json.load(sys.stdin)["tarball_url"])'` | tar zxf - --strip=1
+curl -fsSL https://github.com/alexmadeathing/rpi-pwm-fan-control/archive/refs/heads/main.tar.gz | tar zxf - --strip=1 && echo DONE
 ```
 
-### (Optionally) Edit the source file and change the pin and min/max speed temperature value (in degrees C):
+### (Optional) Validate fan pin
+You may use the `rpi-pin-test.py` utility to test that your fan will turn on and off correctly.
+
+E.g. Turn fan (on pin 18) on:
+```bash
+python rpi-pin-test.py --pin 18 on
+```
+
+### (Optional) Edit the source file to change configuration:
 ```bash
 nano rpi-pwm-fan-control.py
 ```
+Look for the following variable assignments:
 ```py
-min_speed_temp = 40.0
-max_speed_temp = 60.0
+min_speed_temp = 40.0 # Temperature at which fan speed should be 0%
+max_speed_temp = 60.0 # Temperature at which fan speed should be 100%
 
-pwm_pin = 18
-pwm_freq = 100
+pwm_pin = 18          # PWM Pin
+                      # Refer to your Pi pinout diagram and use `rpi-pin-test.py` to test pins
+                      #
+                      # E.g. python rpi-pin-test.py --pin 18 on
+                      #
+                      # On RPi 4, you may choose pin 12, 14, or 18
 
-sleep_time = 5
+refresh_interval = 5  # How often to check and update (recommended to be > 1.0 to reduce stress on CPU and fan)
+```
+Press `Ctrl-0; Enter` to save.
+
+Press `Ctrl-X` to exit.
+
+### Install
+```bash
+sudo bash install.sh
+```
+
+### Uninstall
+```bash
+sudo bash uninstall.sh
 ```
