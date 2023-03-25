@@ -7,7 +7,7 @@ sudo apt install python3-rpi.gpio
 ```
 
 # Installation from source
-It is recommended that you install from source so that the correct GPIO pin and temperature ranges can be selected. These properties are currently hard coded in `rpi-pwm-fan-control.py`.
+It is recommended that you install from source so that the correct GPIO pin and temperature ranges can be selected. These properties are currently hard coded.
 
 ### Download
 ```bash
