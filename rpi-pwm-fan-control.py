@@ -5,13 +5,19 @@ import re
 import traceback
 import sys
 
-min_speed_temp = 40.0
-max_speed_temp = 60.0
+min_speed_temp = 40.0 # Temperature at which fan speed should be 0%
+max_speed_temp = 60.0 # Temperature at which fan speed should be 100%
 
-pwm_pin = 18
+pwm_pin = 18          # PWM Pin
+                      # Refer to your Pi pinout diagram and use `rpi-pin-test.py` to test pins
+                      #
+                      # E.g. python rpi-pin-test.py --pin 18 on
+                      #
+                      # On RPi 4, you may choose pin 12, 14, or 18
+
+refresh_interval = 5  # How often to check and update (recommended to be > 1.0 to reduce stress on CPU and fan)
+
 pwm_freq = 100
-
-sleep_time = 5
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -35,7 +41,7 @@ try:
         speed = get_speed_percent(temp)
         pwm.ChangeDutyCycle(speed)
 #        print('\nTemp: %2.2f, Speed: %2.2f' % (temp, speed))
-        time.sleep(sleep_time)
+        time.sleep(refresh_interval)
 except KeyboardInterrupt:
     pass
 except:
