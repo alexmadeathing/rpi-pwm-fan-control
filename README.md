@@ -47,6 +47,10 @@ Press `Ctrl-X` to exit.
 ```bash
 sudo bash install.sh
 ```
+If you don't plan on uninstalling or editing any time soon, you may safely delete the source folder:
+```bash
+cd .. && rm -r rpi-pwm-fan-control
+```
 
 ### Check service status
 ```bash
