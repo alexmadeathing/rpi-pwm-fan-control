@@ -1,5 +1,7 @@
 # Raspberry Pi PWM Fam Controller
-A simple python script to control the speed of a PWM fan based on core cpu temperature. Suitable for Raspberry Pi only.
+A simple python script to control the speed of a PWM fan based on core cpu temperature (temperature zone 0). Suitable for Raspberry Pi only.
+
+An installer is provided which ensures the script runs on system startup.
 
 # Installation from source
 It is recommended that you install from source so that the correct GPIO pin and temperature ranges can be selected. These properties are currently hard coded.
