@@ -11,7 +11,7 @@ It is recommended that you install from source so that the correct GPIO pin and 
 
 ### Download
 ```bash
-sudo apt install curl
+sudo apt -qq install curl
 mkdir -p rpi-pwm-fan-control && cd $_
 curl -fsSL https://github.com/alexmadeathing/rpi-pwm-fan-control/archive/refs/heads/main.tar.gz | tar zxf - --strip=1 && echo DONE
 ```
