@@ -51,6 +51,11 @@ Press `Ctrl-X` to exit.
 sudo bash install.sh
 ```
 
+### Check service status
+```bash
+systemctl status rpi-pwm-fan-control
+```
+
 ### Uninstall
 ```bash
 sudo bash uninstall.sh
