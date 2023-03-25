@@ -1,0 +1,8 @@
+[Unit]
+Description=RPi PWM Fan Control
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/rpi-pwm-fan-control.py
+
+[Install]
+WantedBy=multi-user.target
