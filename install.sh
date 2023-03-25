@@ -5,6 +5,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+apt install python3-rpi.gpio
+
 cd "$(dirname "$0")"
 cp rpi-pwm-fan-control.py /usr/local/bin/
 cp rpi-pwm-fan-control.service /etc/systemd/system/
