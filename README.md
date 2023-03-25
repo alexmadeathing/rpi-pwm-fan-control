@@ -1,11 +1,6 @@
 # Raspberry Pi PWM Fam Controller
 A simple python script to control the speed of a PWM fan based on core cpu temperature. Suitable for Raspberry Pi only.
 
-# Pre-requisites
-```bash
-sudo apt install python3-rpi.gpio
-```
-
 # Installation from source
 It is recommended that you install from source so that the correct GPIO pin and temperature ranges can be selected. These properties are currently hard coded.
 
@@ -42,7 +37,7 @@ pwm_pin = 18          # PWM Pin
 
 refresh_interval = 5  # How often to check and update (recommended to be > 1.0 to reduce stress on CPU and fan)
 ```
-Press `Ctrl-0; Enter` to save.
+Press `Ctrl-O; Enter` to save.
 
 Press `Ctrl-X` to exit.
 
